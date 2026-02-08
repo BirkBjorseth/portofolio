@@ -2,8 +2,10 @@ export type Project = {
   slug: string
   title: string
   description: string
+  cardDescription?: string
   tags: string[]
   coverImage?: string
+  kind?: "web" | "mobile"
   links?: {
     live?: string
     repo?: string
@@ -15,7 +17,11 @@ export const projects: Project[] = [
   {
     slug: "supremacy",
     title: "Supremacy",
+
     description: "bla bla bla",
+
+    cardDescription: "bla bla bla",
+
     tags: ["ASP.NET Core", "C#"],
 
     coverImage: "/supremacy/supremacy1.png",
@@ -27,7 +33,11 @@ export const projects: Project[] = [
   {
     slug: "lagerstyringssystem",
     title: "lagerstyringssystem",
+
     description: "bla bla bla",
+
+    cardDescription: "bla bla bla",
+
     tags: ["ASP.NET Core", "React", "TypeScript"],
 
     coverImage: "/vinjes/vinjes1.png",
@@ -39,7 +49,12 @@ export const projects: Project[] = [
   {
     slug: "sportsbetting-app",
     title: "sportsbetting-app",
-    description: "Mobilspill for sportsbetting der brukere plasserer bets på ekte fotballkamper uten økonomisk risiko.",
+    kind: "mobile",
+
+    description: "Mobilapp for sportsbetting med virtuelle coins.",
+
+    cardDescription: "Mobilapp for sportsbetting med virtuelle coins.",
+
     tags: ["React Native", "TypeScript", "Expo", "Supabase"],
 
     coverImage: "/betting/hovedside.png",

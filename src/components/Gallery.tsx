@@ -2,8 +2,9 @@
 
 import Image from "next/image"
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { IphoneMockup } from "./IphoneMockup"
 
-export function Gallery({ images, title = "Gallery" }: { images: string[]; title?: string }) {
+export function Gallery({ images, title = "Gallery", kind }: { images: string[]; title?: string; kind?: "web" | "mobile" }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images])
   const [index, setIndex] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
@@ -23,11 +24,19 @@ export function Gallery({ images, title = "Gallery" }: { images: string[]; title
   const open = useCallback(() => setIsOpen(true), [])
   const close = useCallback(() => setIsOpen(false), [])
 
+  // 🔑 Keyboard navigation (always active)
   useEffect(() => {
-    if (!isOpen) return
-
     function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") close()
+      const tag = (e.target as HTMLElement | null)?.tagName?.toLowerCase()
+      if (tag === "input" || tag === "textarea" || tag === "select") return
+
+      if (isOpen) {
+        if (e.key === "Escape") close()
+        if (e.key === "ArrowLeft") prev()
+        if (e.key === "ArrowRight") next()
+        return
+      }
+
       if (e.key === "ArrowLeft") prev()
       if (e.key === "ArrowRight") next()
     }
@@ -36,20 +45,31 @@ export function Gallery({ images, title = "Gallery" }: { images: string[]; title
     return () => window.removeEventListener("keydown", onKeyDown)
   }, [isOpen, close, prev, next])
 
-  // After hooks: safe early return
   if (length === 0) return null
 
   const clampedIndex = ((index % length) + length) % length
   const current = safeImages[clampedIndex]
+  const isMobile = kind === "mobile"
 
   return (
     <section className="mt-12">
       <h2 className="text-xl font-semibold">{title}</h2>
 
-      {/* Main image (A): ALWAYS fills area (cover). Full image available in fullscreen modal (contain). */}
+      {/* Main image */}
       <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-        <button type="button" onClick={open} className="relative block aspect-[16/9] w-full overflow-hidden" aria-label="Open fullscreen image">
-          <Image src={current} alt={`${title} ${clampedIndex + 1}`} fill className="object-cover" priority />
+        <button type="button" onClick={open} className="relative block w-full overflow-hidden" aria-label="Open fullscreen image">
+          {isMobile ? (
+            <div className="flex justify-center py-8">
+              {/* litt større ramme -> skarpere + bedre utnyttelse av plassen */}
+              <div className="w-[260px] sm:w-[300px]">
+                <IphoneMockup src={current} alt={`${title} ${clampedIndex + 1}`} />
+              </div>
+            </div>
+          ) : (
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <Image src={current} alt={`${title} ${clampedIndex + 1}`} fill className="object-cover" priority />
+            </div>
+          )}
 
           <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-black/40 px-3 py-1.5 text-xs text-white/80 backdrop-blur">Click to enlarge</div>
         </button>
@@ -72,16 +92,18 @@ export function Gallery({ images, title = "Gallery" }: { images: string[]; title
         )}
       </div>
 
-      {/* Thumbnails (keep uniform): cover + 16:9 */}
+      {/* Thumbnails */}
       {length > 1 && (
         <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
           {safeImages.map((src, i) => (
             <button
               key={src}
               onClick={() => setIndex(i)}
-              className={["relative aspect-[16/9] overflow-hidden rounded-xl border bg-black/20 transition", i === clampedIndex ? "border-white/40" : "border-white/10 hover:border-white/25"].join(
-                " ",
-              )}
+              className={[
+                "relative overflow-hidden rounded-xl border bg-black/20 transition",
+                i === clampedIndex ? "border-white/40" : "border-white/10 hover:border-white/25",
+                isMobile ? "aspect-[9/16]" : "aspect-[16/9]",
+              ].join(" ")}
               aria-label={`Open image ${i + 1}`}
             >
               <Image src={src} alt="" fill className="object-cover" />
@@ -90,7 +112,7 @@ export function Gallery({ images, title = "Gallery" }: { images: string[]; title
         </div>
       )}
 
-      {/* Fullscreen modal (contain): shows full screenshot regardless of aspect ratio */}
+      {/* Fullscreen modal */}
       {isOpen && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" onMouseDown={(e) => e.target === e.currentTarget && close()}>
           <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
