@@ -71,14 +71,9 @@ export const projects: Project[] = [
     description: `
     Mobilspill for sportsbetting basert på ekte fotballkamper, men uten bruk av ekte penger.
 
-    Appen henter kamper og odds fra eksterne API-er og lar brukere plassere spill med
-    virtuelle coins. Brukere mottar startbalanse ved registrering, kan følge åpne bets
-    og får automatisk oppdatert saldo når kampene er ferdigspilt.
+    Appen henter kamper og odds fra eksterne API-er og lar brukere plassere spill med virtuelle coins. Brukere mottar startbalanse ved registrering, kan følge åpne bets og får automatisk oppdatert saldo når kampene er ferdigspilt.
 
-    Applikasjonen er bygget i React Native, og bruker Supabase
-    til autentisering, database og backend-logikk. Det er også implementert frivillig
-    kjøp av virtuelle coins via Stripe.
-    `,
+    Applikasjonen er bygget i React Native, og bruker Supabase til autentisering, database og backend-logikk. Det er også implementert frivillig kjøp av virtuelle coins via Stripe.`,
 
     cardDescription: "Mobilspill for sportsbetting.",
 
