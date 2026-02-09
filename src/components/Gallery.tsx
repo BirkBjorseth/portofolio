@@ -4,12 +4,14 @@ import Image from "next/image"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { IphoneMockup } from "./IphoneMockup"
 
-export function Gallery({ images, title = "Gallery", kind }: { images: string[]; title?: string; kind?: "web" | "mobile" }) {
+export function Gallery({ images, kind }: { images: string[]; kind?: "web" | "mobile" }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images])
+
   const [index, setIndex] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
 
   const length = safeImages.length
+  const isMobile = kind === "mobile"
 
   const prev = useCallback(() => {
     if (length <= 0) return
@@ -21,11 +23,16 @@ export function Gallery({ images, title = "Gallery", kind }: { images: string[];
     setIndex((i) => (i + 1) % length)
   }, [length])
 
-  const open = useCallback(() => setIsOpen(true), [])
+  const open = useCallback(() => {
+    if (length <= 0) return
+    setIsOpen(true)
+  }, [length])
+
   const close = useCallback(() => setIsOpen(false), [])
 
-  // 🔑 Keyboard navigation (always active)
   useEffect(() => {
+    if (length <= 0) return
+
     function onKeyDown(e: KeyboardEvent) {
       const tag = (e.target as HTMLElement | null)?.tagName?.toLowerCase()
       if (tag === "input" || tag === "textarea" || tag === "select") return
@@ -43,38 +50,32 @@ export function Gallery({ images, title = "Gallery", kind }: { images: string[];
 
     window.addEventListener("keydown", onKeyDown)
     return () => window.removeEventListener("keydown", onKeyDown)
-  }, [isOpen, close, prev, next])
+  }, [length, isOpen, close, prev, next])
 
   if (length === 0) return null
 
   const clampedIndex = ((index % length) + length) % length
   const current = safeImages[clampedIndex]
-  const isMobile = kind === "mobile"
 
   return (
-    <section className="mt-12">
-      <h2 className="text-xl font-semibold">{title}</h2>
-
-      {/* Main image */}
-      <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+    <section>
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
         <button type="button" onClick={open} className="relative block w-full overflow-hidden" aria-label="Open fullscreen image">
           {isMobile ? (
-            <div className="flex justify-center py-8">
-              {/* litt større ramme -> skarpere + bedre utnyttelse av plassen */}
-              <div className="w-[260px] sm:w-[300px]">
-                <IphoneMockup src={current} alt={`${title} ${clampedIndex + 1}`} />
+            <div className="flex justify-center py-10">
+              <div className="w-[280px] sm:w-[320px]">
+                <IphoneMockup src={current} alt={`Screenshot ${clampedIndex + 1}`} />
               </div>
             </div>
           ) : (
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <Image src={current} alt={`${title} ${clampedIndex + 1}`} fill className="object-cover" priority />
+            <div className="relative aspect-[16/9] w-full overflow-hidden scale-[1.02]">
+              <Image src={current} alt={`Screenshot ${clampedIndex + 1}`} fill className="object-cover" priority />
             </div>
           )}
 
-          <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-black/40 px-3 py-1.5 text-xs text-white/80 backdrop-blur">Click to enlarge</div>
+          <div className="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-black/40 px-3 py-1.5 text-xs text-white/80 backdrop-blur">Fullskjerm</div>
         </button>
 
-        {/* Controls */}
         {length > 1 && (
           <div className="flex items-center justify-between border-t border-white/10 px-4 py-3">
             <button onClick={prev} className="rounded-lg border border-white/15 px-3 py-1.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition">
@@ -92,12 +93,11 @@ export function Gallery({ images, title = "Gallery", kind }: { images: string[];
         )}
       </div>
 
-      {/* Thumbnails */}
       {length > 1 && (
         <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6">
           {safeImages.map((src, i) => (
             <button
-              key={src}
+              key={`${src}-${i}`}
               onClick={() => setIndex(i)}
               className={[
                 "relative overflow-hidden rounded-xl border bg-black/20 transition",
@@ -112,13 +112,12 @@ export function Gallery({ images, title = "Gallery", kind }: { images: string[];
         </div>
       )}
 
-      {/* Fullscreen modal */}
       {isOpen && (
         <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true" onMouseDown={(e) => e.target === e.currentTarget && close()}>
           <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
             <div className="relative w-full max-w-[95vw]">
               <button onClick={close} className="absolute -top-12 right-0 rounded-lg border border-white/15 bg-black/40 px-3 py-1.5 text-sm text-white/80 hover:bg-white/5 hover:text-white transition">
-                Esc to close ✕
+                Esc ✕
               </button>
 
               {length > 1 && (
@@ -141,7 +140,7 @@ export function Gallery({ images, title = "Gallery", kind }: { images: string[];
               )}
 
               <div className="relative mx-auto h-[85vh] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
-                <Image src={current} alt={`${title} fullscreen`} fill className="object-contain" priority />
+                <Image src={current} alt="Screenshot fullscreen" fill className="object-contain" priority />
               </div>
 
               <div className="mt-3 text-center text-sm text-white/70">

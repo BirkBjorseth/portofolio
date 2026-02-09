@@ -13,37 +13,63 @@ export default async function ProjectDetailsPage({ params, searchParams }: { par
   const backHref = sp.from === "home" ? "/#prosjekter" : "/projects"
   const backLabel = sp.from === "home" ? "← Tilbake til forsiden" : "← Tilbake til prosjekter"
 
+  const isMobileProject = project.kind === "mobile"
+
   return (
-    <main className="mx-auto max-w-4xl px-6 py-16">
+    <main className="mx-auto max-w-6xl px-6 py-16">
       <BackButton href={backHref} label={backLabel} />
 
-      <h1 className="mt-4 text-4xl font-extrabold tracking-tight">{project.title}</h1>
+      {/* Layout */}
+      <div
+        className={`
+          mt-10 grid gap-12
+          lg:grid-cols-2
+          ${isMobileProject ? "" : "lg:items-start"}
+        `}
+      >
+        {/* LEFT: Info */}
+        <div>
+          <h1 className="text-4xl font-extrabold tracking-tight">{project.title}</h1>
 
-      <p className="mt-4 max-w-2xl text-white/80">{project.description}</p>
+          <p className="mt-4 max-w-xl text-white/75 leading-relaxed">{project.description}</p>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        {project.links?.repo ? (
-          <a href={project.links.repo} target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 px-4 py-2 text-sm hover:bg-white/5 transition">
-            Se repo
-          </a>
-        ) : null}
+          {/* Actions */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            {project.links?.repo && (
+              <a href={project.links.repo} target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 px-4 py-2 text-sm hover:bg-white/5 transition">
+                Se repo
+              </a>
+            )}
 
-        {project.links?.live ? (
-          <a href={project.links.live} target="_blank" rel="noreferrer" className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90 transition">
-            Live demo
-          </a>
-        ) : null}
+            {project.links?.live && (
+              <a href={project.links.live} target="_blank" rel="noreferrer" className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90 transition">
+                Live demo
+              </a>
+            )}
+          </div>
+
+          {/* Tags */}
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT: Gallery */}
+        {project.gallery?.length && (
+          <div
+            className={`
+              ${isMobileProject ? "" : "lg:-mr-12"}
+              rounded-3xl border border-white/10 bg-white/[0.03] p-6
+            `}
+          >
+            <Gallery images={project.gallery} kind={project.kind} />
+          </div>
+        )}
       </div>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {project.tags.map((tag) => (
-          <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-xs text-white/80">
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {project.gallery?.length ? <Gallery images={project.gallery} kind={project.kind} /> : null}
     </main>
   )
 }

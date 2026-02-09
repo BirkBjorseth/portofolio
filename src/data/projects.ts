@@ -15,7 +15,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "supremacy",
+    slug: "Supremacy",
     title: "Supremacy",
 
     description:
@@ -42,8 +42,8 @@ export const projects: Project[] = [
   },
 
   {
-    slug: "lagerstyringssystem",
-    title: "lagerstyringssystem",
+    slug: "Lagerstyringssystem",
+    title: "Lagerstyringssystem",
 
     description:
       "Visuelt bokslagerstyringssystem som modellerer fysisk plassering av bokser med side, rekke, dybde og nivå. Systemet støtter drag-and-drop for flytting, booking av bokser til kunder og håndhever fysiske begrensninger, som at bokser ikke kan flyttes hvis noe står over dem.",
@@ -54,17 +54,27 @@ export const projects: Project[] = [
     tags: ["ASP.NET Core", "React", "TypeScript"],
 
     coverImage: "/vinjes/vinjes1.png",
-    gallery: ["/vinjes/vinjes1.png", "/vinjes/vinjes2.png", "/vinjes/vinjes3.png", "/vinjes/vinjes4.png", "/vinjes/vinjes5.png"],
+    gallery: ["/vinjes/vinjes1.png", "/vinjes/vinjes2.png", "/vinjes/vinjes3.png", "/vinjes/vinjes4.png"],
 
     links: {},
   },
 
   {
-    slug: "sportsbetting-app",
-    title: "sportsbetting-app",
+    slug: "Sportsbetting-app",
+    title: "Sportsbetting-app",
     kind: "mobile",
 
-    description: "Mobilapp for sportsbetting med virtuelle coins.",
+    description: `
+    Mobilspill for sportsbetting basert på ekte fotballkamper, men uten bruk av ekte penger.
+
+    Appen henter kamper og odds fra eksterne API-er og lar brukere plassere spill med
+    virtuelle coins. Brukere mottar startbalanse ved registrering, kan følge åpne bets
+    og får automatisk oppdatert saldo når kampene er ferdigspilt.
+
+    Applikasjonen er bygget i React Native, og bruker Supabase
+    til autentisering, database og backend-logikk. Det er også implementert frivillig
+    kjøp av virtuelle coins via Stripe.
+    `,
 
     cardDescription: "Mobilapp for sportsbetting med virtuelle coins.",
 
