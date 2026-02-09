@@ -10,8 +10,18 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-black text-white antialiased">
-        <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
+      <body className="min-h-screen text-white antialiased relative overflow-x-hidden">
+        {/* Global background (full height, fixed) */}
+        <div
+          className="
+            pointer-events-none fixed inset-0 -z-10
+            bg-black
+            bg-[radial-gradient(1200px_circle_at_20%_0%,rgba(255,255,255,0.06),transparent_60%),
+                radial-gradient(1000px_circle_at_80%_20%,rgba(255,255,255,0.04),transparent_55%)]
+          "
+        />
+
+        <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
             <Link href="/" className="text-sm font-semibold tracking-wide">
               Birk
