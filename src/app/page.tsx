@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 import { projects } from "@/data/projects"
 import { ProjectCard } from "@/components/ProjectCard"
 import { CopyEmailButton } from "@/components/CopyEmailButton"
@@ -17,7 +17,8 @@ export default function HomePage() {
             Se prosjekter
           </Link>
 
-          {/* GitHub link */}
+          {/* Sosiale medier */}
+
           <a
             href="https://github.com/BirkBjorseth"
             target="_blank"
@@ -26,6 +27,16 @@ export default function HomePage() {
             className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.04] text-white/75 transition hover:bg-white/[0.07] hover:text-white"
           >
             <Github className="h-5 w-5" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/birkbjorseth/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.04] text-white/75 transition hover:bg-white/[0.07] hover:text-white"
+          >
+            <Linkedin className="h-5 w-5" />
           </a>
         </div>
       </section>

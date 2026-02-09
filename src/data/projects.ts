@@ -76,7 +76,7 @@ export const projects: Project[] = [
     kjøp av virtuelle coins via Stripe.
     `,
 
-    cardDescription: "Mobilapp for sportsbetting med virtuelle coins.",
+    cardDescription: "Mobilspill for sportsbetting.",
 
     tags: ["React Native", "TypeScript", "Expo", "Supabase"],
 
