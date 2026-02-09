@@ -18,14 +18,25 @@ export const projects: Project[] = [
     slug: "supremacy",
     title: "Supremacy",
 
-    description: "bla bla bla",
+    description:
+      "Festival-nettside bygget i ASP.NET MVC med roller, adminpanel og full Stripe-basert checkout. Alt innhold kan administreres dynamisk, med tilhørende mobilapp for scanning og validering av billetter.",
 
-    cardDescription: "bla bla bla",
+    cardDescription:
+      "Festival-nettside bygget i ASP.NET MVC med roller, adminpanel og full Stripe-basert checkout. Alt innhold kan administreres dynamisk, med tilhørende mobilapp for scanning og validering av billetter.",
 
     tags: ["ASP.NET Core", "C#"],
 
     coverImage: "/supremacy/supremacy1.png",
-    gallery: ["/supremacy/supremacy1.png", "/supremacy/supremacy2.png", "/supremacy/supremacy3.png", "/supremacy/supremacy4.png", "/supremacy/supremacy5.png", "/supremacy/supremacy6.png"],
+    gallery: [
+      "/supremacy/supremacy1.png",
+      "/supremacy/supremacy2.png",
+      "/supremacy/supremacy3.png",
+      "/supremacy/supremacy4.png",
+      "/supremacy/supremacy7.png",
+      "/supremacy/supremacy8.png",
+      "/supremacy/supremacy5.png",
+      "/supremacy/supremacy6.png",
+    ],
 
     links: {},
   },
@@ -34,9 +45,11 @@ export const projects: Project[] = [
     slug: "lagerstyringssystem",
     title: "lagerstyringssystem",
 
-    description: "bla bla bla",
+    description:
+      "Visuelt bokslagerstyringssystem som modellerer fysisk plassering av bokser med side, rekke, dybde og nivå. Systemet støtter drag-and-drop for flytting, booking av bokser til kunder og håndhever fysiske begrensninger, som at bokser ikke kan flyttes hvis noe står over dem.",
 
-    cardDescription: "bla bla bla",
+    cardDescription:
+      "Visuelt bokslagerstyringssystem som modellerer fysisk plassering av bokser med side, rekke, dybde og nivå. Systemet støtter drag-and-drop for flytting, booking av bokser til kunder og håndhever fysiske begrensninger, som at bokser ikke kan flyttes hvis noe står over dem.",
 
     tags: ["ASP.NET Core", "React", "TypeScript"],
 
