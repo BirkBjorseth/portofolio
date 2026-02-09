@@ -3,12 +3,13 @@ import Image from "next/image"
 import type { Project } from "@/data/projects"
 import { IphoneMockup } from "@/components/IphoneMockup"
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, fromHome = false }: { project: Project; fromHome?: boolean }) {
   const isMobile = project.kind === "mobile"
+  const href = fromHome ? `/projects/${project.slug}?from=home` : `/projects/${project.slug}`
 
   return (
     <Link
-      href={`/projects/${project.slug}`}
+      href={href}
       className="
         group relative block h-full overflow-hidden rounded-3xl
         bg-white/[0.035] backdrop-blur-xl
@@ -23,7 +24,6 @@ export function ProjectCard({ project }: { project: Project }) {
         <h3 className="text-lg font-semibold tracking-tight text-white/95">{project.title}</h3>
         <div className="mt-3 h-px w-full bg-gradient-to-r from-white/14 via-white/6 to-transparent" />
 
-        {/* Cover */}
         <div className="mt-4">
           {project.coverImage ? (
             isMobile ? (
@@ -45,7 +45,6 @@ export function ProjectCard({ project }: { project: Project }) {
           )}
         </div>
 
-        {/* Tags: 4 under image */}
         {!isMobile && (
           <div className="mt-4 flex flex-wrap gap-2">
             {project.tags.slice(0, 4).map((t) => (
@@ -56,11 +55,8 @@ export function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
 
-        {/* Description */}
         <div className="mt-4 rounded-2xl bg-white/[0.03] p-4">
           <p className="text-sm leading-relaxed text-white/70 line-clamp-7">{project.cardDescription ?? project.description}</p>
-
-          {/* tags på mobil prosjekter */}
           {isMobile && <p className="mt-3 text-xs text-white/55">{project.tags.slice(0, 4).join(" · ")}</p>}
         </div>
       </div>

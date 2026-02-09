@@ -1,19 +1,21 @@
 import { notFound } from "next/navigation"
-import Link from "next/link"
 import { projects } from "@/data/projects"
 import { Gallery } from "@/components/Gallery"
+import { BackButton } from "@/components/BackButton"
 
-export default async function ProjectDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProjectDetailsPage({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams?: Promise<{ from?: string }> }) {
   const { slug } = await params
+  const sp = (await searchParams) ?? {}
 
   const project = projects.find((p) => p.slug === slug)
   if (!project) return notFound()
 
+  const backHref = sp.from === "home" ? "/#prosjekter" : "/projects"
+  const backLabel = sp.from === "home" ? "← Tilbake til forsiden" : "← Tilbake til prosjekter"
+
   return (
     <main className="mx-auto max-w-4xl px-6 py-16">
-      <Link href="/projects" className="text-sm text-white/70 hover:text-white transition">
-        ← Back to projects
-      </Link>
+      <BackButton href={backHref} label={backLabel} />
 
       <h1 className="mt-4 text-4xl font-extrabold tracking-tight">{project.title}</h1>
 
@@ -22,7 +24,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
       <div className="mt-6 flex flex-wrap gap-3">
         {project.links?.repo ? (
           <a href={project.links.repo} target="_blank" rel="noreferrer" className="rounded-xl border border-white/15 px-4 py-2 text-sm hover:bg-white/5 transition">
-            View repo
+            Se repo
           </a>
         ) : null}
 

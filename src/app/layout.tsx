@@ -4,14 +4,14 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Birk | Portfolio",
-  description: "Portfolio website for Birk",
+  description: "Portfolio - Birk Bjørseth",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen text-white antialiased relative overflow-x-hidden">
-        {/* Global background (full height, fixed) */}
+    <html lang="no">
+      <body className="relative min-h-screen overflow-x-hidden text-white antialiased">
+        {/* Global background */}
         <div
           className="
             pointer-events-none fixed inset-0 -z-10
@@ -21,21 +21,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "
         />
 
+        {/* navbar */}
         <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-            <Link href="/" className="text-sm font-semibold tracking-wide">
+            {/* navn */}
+            <Link href="/" className="text-sm font-semibold tracking-wide text-white">
               Birk
             </Link>
 
-            <nav className="flex items-center gap-6 text-sm text-white/80">
-              <Link href="/" className="hover:text-white transition">
-                Home
+            {/* Navigation */}
+            <nav className="flex items-center gap-6 text-sm text-white/75">
+              <Link href="/" className="transition hover:text-white">
+                Hjem
               </Link>
-              <Link href="/projects" className="hover:text-white transition">
-                Projects
+
+              <Link href="/projects" className="transition hover:text-white">
+                Prosjekter
               </Link>
-              <Link href="mailto:youremail@example.com" className="hover:text-white transition">
-                Contact
+
+              {/* Kontakt */}
+              <Link href="/#kontakt" className="transition hover:text-white">
+                Kontakt
               </Link>
             </nav>
           </div>
@@ -44,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
 
         <footer className="mt-24 border-t border-white/10">
-          <div className="mx-auto max-w-6xl px-6 py-10 text-sm text-white/60">© {new Date().getFullYear()} Birk · Built with Next.js & Tailwind</div>
+          <div className="mx-auto max-w-6xl px-6 py-10 text-sm text-white/60">© {new Date().getFullYear()} Birk · Bygget med Next.js & Tailwind</div>
         </footer>
       </body>
     </html>
