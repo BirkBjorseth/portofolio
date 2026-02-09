@@ -10,7 +10,7 @@ export default function HomePage() {
       <section className="pt-20 pb-24">
         <h1 className="text-5xl font-bold tracking-tight">Hei, jeg heter Birk</h1>
 
-        <p className="mt-4 max-w-2xl text-white/70">Dataingeniør med fokus på programvareutvikling og moderne webteknologi.</p>
+        <p className="mt-4 max-w-2xl text-white/70">Dataingeniør med interesse for programvareutvikling og systemer.</p>
 
         <div className="mt-8 flex items-center gap-4">
           <Link href="/projects" className="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90">

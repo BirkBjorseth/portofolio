@@ -31,7 +31,7 @@ export default async function ProjectDetailsPage({ params, searchParams }: { par
         <div>
           <h1 className="text-4xl font-extrabold tracking-tight">{project.title}</h1>
 
-          <p className="mt-4 max-w-xl text-white/75 leading-relaxed">{project.description}</p>
+          <p className="mt-4 max-w-xl text-white/75 leading-relaxed whitespace-pre-line">{project.description}</p>
 
           {/* Actions */}
           <div className="mt-6 flex flex-wrap gap-3">

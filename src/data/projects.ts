@@ -18,11 +18,15 @@ export const projects: Project[] = [
     slug: "Supremacy",
     title: "Supremacy",
 
-    description:
-      "Festival-nettside bygget i ASP.NET MVC med roller, adminpanel og full Stripe-basert checkout. Alt innhold kan administreres dynamisk, med tilhørende mobilapp for scanning og validering av billetter.",
+    description: `
+    Festival-nettside utviklet som skoleprosjekt, bygget i ASP.NET MVC med roller, adminpanel og checkout via Stripe.
 
-    cardDescription:
-      "Festival-nettside bygget i ASP.NET MVC med roller, adminpanel og full Stripe-basert checkout. Alt innhold kan administreres dynamisk, med tilhørende mobilapp for scanning og validering av billetter.",
+    Løsningen er inspirert av nettsiden til Reverze og Supremacy, med eget design og implementasjon. Alt innhold kan administreres dynamisk, og systemet inkluderer også en tilhørende mobilapp for scanning og validering av billetter.`,
+
+    cardDescription: `
+    Festival-nettside utviklet som skoleprosjekt, bygget i ASP.NET MVC med roller, adminpanel og checkout via Stripe.
+
+    Løsningen er inspirert av nettsiden til Reverze og Supremacy, med eget design og implementasjon. Alt innhold kan administreres dynamisk, og systemet inkluderer også en tilhørende mobilapp for scanning og validering av billetter.`,
 
     tags: ["ASP.NET Core", "C#"],
 

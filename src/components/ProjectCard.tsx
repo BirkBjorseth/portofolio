@@ -56,7 +56,7 @@ export function ProjectCard({ project, fromHome = false }: { project: Project; f
         )}
 
         <div className="mt-4 rounded-2xl bg-white/[0.03] p-4">
-          <p className="text-sm leading-relaxed text-white/70 line-clamp-7">{project.cardDescription ?? project.description}</p>
+          <p className="text-sm leading-relaxed text-white/70 whitespace-pre-line line-clamp-20">{(project.cardDescription ?? project.description).trim()}</p>
           {isMobile && <p className="mt-3 text-xs text-white/55">{project.tags.slice(0, 4).join(" · ")}</p>}
         </div>
       </div>
