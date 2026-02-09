@@ -43,7 +43,7 @@ export default async function ProjectDetailsPage({ params, searchParams }: { par
 
             {project.links?.live && (
               <a href={project.links.live} target="_blank" rel="noreferrer" className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black hover:bg-white/90 transition">
-                Live demo
+                Live
               </a>
             )}
           </div>

@@ -44,7 +44,6 @@ export default function HomePage() {
       {/* prosjekter */}
       <section className="pb-24">
         <h2 className="text-3xl font-semibold">Utvalgte prosjekter</h2>
-        <p className="mt-2 text-white/60">Noe av det jeg har bygget.</p>
 
         <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {projects.slice(0, 3).map((project) => (

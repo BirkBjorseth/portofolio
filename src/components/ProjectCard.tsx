@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import type { Project } from "@/data/projects"
@@ -22,6 +24,21 @@ export function ProjectCard({ project, fromHome = false }: { project: Project; f
 
       <div className="relative p-6">
         <h3 className="text-lg font-semibold tracking-tight text-white/95">{project.title}</h3>
+
+        {project.links?.live && (
+          <button
+            type="button"
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation()
+              window.open(project.links!.live, "_blank", "noopener,noreferrer")
+            }}
+            className="absolute right-6 top-6 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black transition hover:bg-white/90"
+          >
+            Live
+          </button>
+        )}
+
         <div className="mt-3 h-px w-full bg-gradient-to-r from-white/14 via-white/6 to-transparent" />
 
         <div className="mt-4">

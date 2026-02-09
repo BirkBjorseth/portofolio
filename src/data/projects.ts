@@ -100,4 +100,25 @@ export const projects: Project[] = [
 
     links: {},
   },
+
+  {
+    slug: "Eksamensoving",
+    title: "Eksamensøving",
+    kind: "web",
+
+    description: `quiz-app laget for å pugge til eksamen.
+
+Brukeren kan starte en quiz, få resultat i prosent og karakter, og kan vise fasit med markering av riktige og valgte svar.`,
+
+    cardDescription: `quiz-app for eksamenspugging. Viser resultat i prosent/karakter og kan vise fasit med markering av riktige og valgte svar.`,
+
+    tags: ["React", "TypeScript"],
+
+    coverImage: "/eksamen/eksamen1.png",
+    gallery: ["/eksamen/eksamen1.png", "/eksamen/eksamen2.png", "/eksamen/eksamen3.png", "/eksamen/eksamen4.png", "/eksamen/eksamen5.png"],
+
+    links: {
+      live: "https://eksamensoving.vercel.app/",
+    },
+  },
 ]
