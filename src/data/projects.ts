@@ -57,8 +57,8 @@ export const projects: Project[] = [
 
     tags: ["ASP.NET Core", "React", "TypeScript"],
 
-    coverImage: "/vinjes/vinjes1.png",
-    gallery: ["/vinjes/vinjes1.png", "/vinjes/vinjes2.png", "/vinjes/vinjes3.png", "/vinjes/vinjes4.png"],
+    coverImage: "/vinjes/vvinjes1.png",
+    gallery: ["/vinjes/vvinjes1.png", "/vinjes/vvinjes2.png", "/vinjes/vvinjes3.png", "/vinjes/vvinjes4.png"],
 
     links: {},
   },
