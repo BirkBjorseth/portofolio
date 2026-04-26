@@ -4,6 +4,8 @@ export type Project = {
   description: string
   cardDescription?: string
   tags: string[]
+  /** Vises kun på detaljsiden, i tillegg til `tags`. */
+  extraTags?: string[]
   coverImage?: string
   kind?: "web" | "mobile"
   links?: {
@@ -28,7 +30,7 @@ export const projects: Project[] = [
 
     Løsningen er inspirert av nettsiden til Reverze og Supremacy, med eget design og implementasjon. Alt innhold kan administreres dynamisk, og systemet inkluderer også en tilhørende mobilapp for scanning og validering av billetter.`,
 
-    tags: ["ASP.NET Core", "C#"],
+    tags: ["ASP.NET Core", "Stripe"],
 
     coverImage: "/supremacy/supremacy1.png",
     gallery: [
@@ -50,12 +52,41 @@ export const projects: Project[] = [
     title: "Lagerstyringssystem",
 
     description:
-      "Visuelt bokslagerstyringssystem som modellerer fysisk plassering av bokser med side, rekke, dybde og nivå. Systemet støtter drag-and-drop for flytting, booking av bokser til kunder og håndhever fysiske begrensninger, som at bokser ikke kan flyttes hvis noe står over dem.",
+      "Internt produksjonssystem som digitaliserer hele " +
+      "driftsflyten hos Vinjes Transport – fra bokslager og " +
+      "kundebase til byflytte-planlegging og langtransport-" +
+      "logistikk. Erstattet Excel- og papirbaserte prosesser." +
+      "\n\n" +
+      "Sentrale moduler: visuelt bokslager med 3D-grid (side, " +
+      "rekke, dybde, nivå) og drag-and-drop, kundebase med " +
+      "soft-delete og historikk, befaringer med PDF-eksport, " +
+      "byflytte-planlegger med tildeling av ansatte og " +
+      "kjøretøy, langtransport-modul med split-tildeling per " +
+      "legg, og audit-logg på tvers av alle domener." +
+      "\n\n" +
+      "Real-time-synk via SignalR, race-safe booking med " +
+      "PostgreSQL Serializable-transaksjoner, og rolle-basert " +
+      "tilgangsstyring.",
 
     cardDescription:
-      "Visuelt bokslagerstyringssystem som modellerer fysisk plassering av bokser med side, rekke, dybde og nivå. Systemet støtter drag-and-drop for flytting, booking av bokser til kunder og håndhever fysiske begrensninger, som at bokser ikke kan flyttes hvis noe står over dem.",
+      "Internt produksjonssystem som digitaliserer hele " +
+      "driftsflyten hos Vinjes Transport – fra bokslager og " +
+      "kundebase til byflytte-planlegging og langtransport-" +
+      "logistikk. Erstattet Excel- og papirbaserte prosesser." +
+      "\n\n" +
+      "Sentrale moduler: visuelt bokslager med 3D-grid (side, " +
+      "rekke, dybde, nivå) og drag-and-drop, kundebase med " +
+      "soft-delete og historikk, befaringer med PDF-eksport, " +
+      "byflytte-planlegger med tildeling av ansatte og " +
+      "kjøretøy, langtransport-modul med split-tildeling per " +
+      "legg, og audit-logg på tvers av alle domener." +
+      "\n\n" +
+      "Real-time-synk via SignalR, race-safe booking med " +
+      "PostgreSQL Serializable-transaksjoner, og rolle-basert " +
+      "tilgangsstyring.",
 
     tags: ["ASP.NET Core", "React", "TypeScript"],
+    extraTags: ["PostgreSQL"],
 
     coverImage: "/vinjes/vvinjes1.png",
     gallery: ["/vinjes/vvinjes1.png", "/vinjes/vvinjes2.png", "/vinjes/vvinjes3.png", "/vinjes/vvinjes4.png"],

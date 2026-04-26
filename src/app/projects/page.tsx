@@ -5,7 +5,7 @@ import { BackButton } from "@/components/BackButton"
 export default function ProjectsPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-16">
-      <BackButton href="/" label="← Tilbake til forsiden" />
+      <BackButton href="/" label="Tilbake til forsiden" />
 
       <h1 className="mt-4 text-4xl font-bold">Prosjekter</h1>
 

@@ -10,7 +10,7 @@ export function LogoLink() {
     <Link
       href="/"
       scroll
-      className="text-sm font-semibold tracking-wide text-white"
+      className="text-sm font-semibold tracking-wide text-fg"
       onClick={(e) => {
         if (pathname === "/") {
           e.preventDefault()
@@ -18,7 +18,7 @@ export function LogoLink() {
         }
       }}
     >
-      Birk
+      Birk Bjørseth
     </Link>
   )
 }

@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (warm beige – inspirert av Vinjes-paletten) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --page: #ece4cb;
+  --surface: #d8ccaf;
+  --elevated: #c4b491;
+  --fg: #141a2a;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-fg: #ffffff;
+  --glow-1: rgba(37, 99, 235, 0.10);
+  --glow-2: rgba(37, 99, 235, 0.05);
+  --dot-color: rgba(20, 26, 42, 0.12);
+  --grid-color: rgba(20, 26, 42, 0.07);
+}
+
+/* Dark theme (deep navy) */
+.dark {
+  --page: #0a1020;
+  --surface: #111a2e;
+  --elevated: #1a2440;
+  --fg: #f1f5f9;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-fg: #ffffff;
+  --glow-1: rgba(255, 255, 255, 0.06);
+  --glow-2: rgba(255, 255, 255, 0.04);
+  --dot-color: rgba(255, 255, 255, 0.07);
+  --grid-color: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-fg: var(--fg);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--page);
+  color: var(--fg);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.page-glow {
+  background-image:
+    radial-gradient(1200px circle at 20% 0%, var(--glow-1), transparent 60%),
+    radial-gradient(1000px circle at 80% 20%, var(--glow-2), transparent 55%);
+}
+
+/* Subtle dotted background for project pages */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
