@@ -49,47 +49,42 @@ export const projects: Project[] = [
 
   {
     slug: "Lagerstyringssystem",
-    title: "Lagerstyringssystem",
+    title: "Lager- og logistikksystem",
 
     description:
-      "Internt produksjonssystem som digitaliserer hele " +
-      "driftsflyten hos Vinjes Transport – fra bokslager og " +
-      "kundebase til byflytte-planlegging og langtransport-" +
-      "logistikk. Erstattet Excel- og papirbaserte prosesser." +
+      "Internt system laget til Vinjes Transport som " +
+      "digitaliserer hele driftsflyten – fra bokslager og " +
+      "kundebase til byflytte-planlegging og langtransport. " +
+      "Erstattet Excel- og papirbaserte prosesser." +
       "\n\n" +
       "Sentrale moduler: visuelt bokslager med 3D-grid (side, " +
       "rekke, dybde, nivå) og drag-and-drop, kundebase med " +
       "soft-delete og historikk, befaringer med PDF-eksport, " +
       "byflytte-planlegger med tildeling av ansatte og " +
-      "kjøretøy, langtransport-modul med split-tildeling per " +
-      "legg, og audit-logg på tvers av alle domener." +
+      "kjøretøy, og en kjøretøy-flåte der EU-kontroll synkes " +
+      "automatisk fra Vegvesen." +
+      "\n\n" +
+      "Langtransport-modulen håndterer legg-basert split-" +
+      "tildeling (opplasting og levering kan stå på hvert sitt " +
+      "vogntog), avledet status, kubikk- og kapasitetssporing " +
+      "med overbooking-varsler, og delegering av enkeltfaser " +
+      "til by-avdelingen. Audit-logg på tvers av alle domener." +
       "\n\n" +
       "Real-time-synk via SignalR, race-safe booking med " +
       "PostgreSQL Serializable-transaksjoner, og rolle-basert " +
       "tilgangsstyring.",
 
     cardDescription:
-      "Internt produksjonssystem som digitaliserer hele " +
-      "driftsflyten hos Vinjes Transport – fra bokslager og " +
-      "kundebase til byflytte-planlegging og langtransport-" +
-      "logistikk. Erstattet Excel- og papirbaserte prosesser." +
-      "\n\n" +
-      "Sentrale moduler: visuelt bokslager med 3D-grid (side, " +
-      "rekke, dybde, nivå) og drag-and-drop, kundebase med " +
-      "soft-delete og historikk, befaringer med PDF-eksport, " +
-      "byflytte-planlegger med tildeling av ansatte og " +
-      "kjøretøy, langtransport-modul med split-tildeling per " +
-      "legg, og audit-logg på tvers av alle domener." +
-      "\n\n" +
-      "Real-time-synk via SignalR, race-safe booking med " +
-      "PostgreSQL Serializable-transaksjoner, og rolle-basert " +
-      "tilgangsstyring.",
+      "Internt lagerstyrings- og logistikksystem laget til " +
+      "Vinjes Transport. Bokslager med 3D-grid, kunder, " +
+      "befaring, byflytte- og langtransport-planlegging og " +
+      "kjøretøy – med real-time-synk og race-safe booking.",
 
     tags: ["ASP.NET Core", "React", "TypeScript"],
     extraTags: ["PostgreSQL"],
 
     coverImage: "/vinjes/vvinjes1.png",
-    gallery: ["/vinjes/vvinjes1.png", "/vinjes/vvinjes2.png", "/vinjes/vvinjes3.png", "/vinjes/vvinjes4.png"],
+    gallery: ["/vinjes/vvinjes1.png", "/vinjes/vvinjes2.png", "/vinjes/vvinjes3.png", "/vinjes/vvinjes4.png", "/vinjes/vvinjes5.png"],
 
     links: {},
   },
